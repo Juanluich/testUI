@@ -49,9 +49,13 @@ public class ExtraButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         extraPanel.SetActive(false);
         extraPanel.transform.DOScale(0f, swapDuration).SetEase(Ease.InBounce);
-        transform.DOScale(1f, 4.5f).SetEase(Ease.InBounce);
+        
     }
-
+    IEnumerator HideExtraButtonDelay()
+    {
+        yield return new WaitForSeconds(4f);
+        transform.DOScale(1f, .5f).SetEase(Ease.InBounce);
+    }
 
     void ResetScale() { transform.DOScale(new Vector3(1, 1, 1), 0.1f); }
 
