@@ -10,9 +10,10 @@ public class StartTween : MonoBehaviour
     [SerializeField] RectTransform rectTransform;
 
     [SerializeField] List<GameObject> items = new List<GameObject>();
+    [SerializeField] List<GameObject> buttons = new List<GameObject>();
 
     [SerializeField] AudioClip popUpSFX;
-    [SerializeField] AudioSource audioSource;
+    AudioSource audioSource;
 
     private void Awake()
     {
@@ -51,4 +52,5 @@ public class StartTween : MonoBehaviour
         }
         
     }
+
 }
