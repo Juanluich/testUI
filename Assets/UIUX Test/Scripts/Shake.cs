@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-public class CrownTitle : MonoBehaviour, IPointerEnterHandler
+public class Shake : MonoBehaviour, IPointerEnterHandler
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.DOShakePosition(4f, 0.8f, 8);
+        transform.DOShakePosition(1f, 0.8f, 8);
     }
 
 }

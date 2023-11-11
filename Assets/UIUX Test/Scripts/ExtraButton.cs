@@ -35,14 +35,21 @@ public class ExtraButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         audiosource.PlayOneShot(extraButtonSFX);
         clicked = true;
-        StartCoroutine(ShowExtraPanel());
-        transform.DOScale(0f, swapDuration).SetEase(Ease.OutBounce).OnComplete(()=> { this.gameObject.SetActive(false); });
+        StartCoroutine(ShowExtraPanel(0.5f));
+        transform.DOScale(0f, swapDuration).SetEase(Ease.OutBounce);
     }
-    IEnumerator ShowExtraPanel()
+    IEnumerator ShowExtraPanel(float delay)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delay);
         extraPanel.SetActive(true);
         extraPanel.transform.DOScale(1f, swapDuration).SetEase(Ease.OutBounce);
+    }
+
+    public void HideExtraButtons()
+    {
+        extraPanel.SetActive(false);
+        extraPanel.transform.DOScale(0f, swapDuration).SetEase(Ease.InBounce);
+        transform.DOScale(1f, 4.5f).SetEase(Ease.InBounce);
     }
 
 

@@ -40,7 +40,7 @@ public class GhostButtonController : MonoBehaviour, IPointerEnterHandler
     }
     IEnumerator ResetButton(Image barButtonImg)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         barButtonImg.DOFade(1f, 1f);
         ghostButtonImage.DOFade(1f, 1f).SetEase(Ease.Linear);
