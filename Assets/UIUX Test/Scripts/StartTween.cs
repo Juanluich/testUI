@@ -7,7 +7,7 @@ public class StartTween : MonoBehaviour
 {
     [SerializeField] float fadeTime = 1f;
     [SerializeField] CanvasGroup canvasGroup;
-    [SerializeField] RectTransform rectTransform;
+    [SerializeField] Transform canvasTransform;
 
     [SerializeField] List<GameObject> items = new List<GameObject>();
     [SerializeField] List<GameObject> buttons = new List<GameObject>();
@@ -18,13 +18,14 @@ public class StartTween : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        
     }
 
     public void PanelFadeIn()
     {
         canvasGroup.alpha = 0f;
-        rectTransform.transform.localPosition = new Vector3(0f, -10f, 0f);
-        rectTransform.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.OutElastic);
+        canvasTransform.transform.localPosition = new Vector3(0f, -10f, 0f);
+        canvasTransform.DOMove(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.OutElastic);
         canvasGroup.DOFade(1, fadeTime);
         StartCoroutine(nameof(ItemsAnimation));
     }
@@ -32,8 +33,8 @@ public class StartTween : MonoBehaviour
     public void PanelFadeOut()
     {
         canvasGroup.alpha = 1f;
-        rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
-        rectTransform.DOAnchorPos(new Vector2(0f, -10f), fadeTime, false).SetEase(Ease.InOutQuint);
+        canvasTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
+        canvasTransform.DOMove(new Vector2(0f, -10f), fadeTime, false).SetEase(Ease.InOutQuint);
         canvasGroup.DOFade(1, fadeTime);
 
     }
